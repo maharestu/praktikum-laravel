@@ -32,6 +32,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
+    #Tugas Praktikum 4
+    Route::resource('users', UserController::class);
 });
 
 Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
