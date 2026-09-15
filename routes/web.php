@@ -41,3 +41,17 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
     Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
 });
 #=============================================================================================================
+# Demo Presentasi
+Route::get('/demo-xss', function (Illuminate\Http\Request $request) {
+    return view('demo.xss', ['name' => $request->input('name')]);
+});
+Route::get('/demo-escape-blade', function () {
+    return view('demo.escape-blade', ['nama' => 'John Doe']);
+});
+Route::get('/demo-conditional', function () {
+    return view('demo.conditional', ['isLogin' => false, 'nama' => 'John Doe', 'produk' => null]);
+});
+Route::get('/demo-home', function () {
+    return view('demo.home');
+});
+#=============================================================================================================

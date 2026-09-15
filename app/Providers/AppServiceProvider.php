@@ -19,6 +19,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        #=============================================================================================================
+        # Demo Presentasi
+        //Menambahkan lokasi view demo ke dalam aplikasi
+        \Illuminate\Support\Facades\Blade::anonymousComponentPath(
+        resource_path('views/demo/components'),
+        'demo'
+        );
+        #=============================================================================================================
     }
 }
