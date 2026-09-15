@@ -6,7 +6,7 @@
     <title>Demo XSS</title>
 </head>
 <body>
-    {!! $name !!}
-    <!-- {{ $name }} -->
+    <!-- {!! $name !!} -->
+    {{ $name }}
 </body>
 </html>

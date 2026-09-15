@@ -49,7 +49,7 @@ Route::get('/demo-escape-blade', function () {
     return view('demo.escape-blade', ['nama' => 'John Doe']);
 });
 Route::get('/demo-conditional', function () {
-    return view('demo.conditional', ['isLogin' => false, 'nama' => 'John Doe', 'produk' => null]);
+    return view('demo.conditional', ['isLogin' => true, '' => 'John Doe', 'produk' => "satu"]);
 });
 Route::get('/demo-home', function () {
     return view('demo.home');
