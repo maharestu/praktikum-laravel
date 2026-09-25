@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Product extends Model
 {
@@ -18,6 +19,12 @@ class Product extends Model
     {
         return $this->hasMany(TransactionDetail::class);
     }
-
+    //Tugas Praktikum 6
+    protected function priceRupiah(): Attribute
+    {
+        return Attribute::get(
+            fn () => 'Rp ' . number_format($this->price, 0, ',', '.')
+        );
+    }
 
 }
