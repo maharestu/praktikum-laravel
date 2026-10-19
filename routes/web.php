@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController; #Praktikum 2
 use App\Http\Controllers\Auth\LoginController; #Praktikum 4
+use App\Http\Controllers\CategoryController; #Praktikum 7
+use App\Http\Controllers\ProductController; #Praktikum 7
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,4 +61,7 @@ Route::get('/demo-home', function () {
 Route::get('/demo-badge', function () {
     return view('demo-badge');
 }); 
+Route::get('/pos/history', function () {
+    return "Riwayat Transaksi Saya";
+}) ->name('pos.history');
 #=============================================================================================================
