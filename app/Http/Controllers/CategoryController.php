@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('master-data.category.edit', compact('category'));
     }
 
     /**
@@ -63,7 +63,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100|unique:categories,name,' . $category->id,
+            'description' => 'nullable|string|max:255',
+        ]);
+
+        $category->update($validated);
+
+        return redirect()->route('categories.index')->with('success', 'Kategori berhasil diperbarui.');
     }
 
     /**
@@ -71,6 +78,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Kategori berhasil dihapus.');
     }
 }
