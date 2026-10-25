@@ -13,12 +13,27 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->latest()->paginate(10);
-        return view('master-data.product.index', compact('products'));
+        $query = Product::with('category');
+    
+        if ($request->filled('search')) {
+            $keyword = $request->search;
+            $query->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%")
+                ->orWhere('code', 'like', "%{$keyword}%");
+            });
+        }
+    
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+    
+        $products = $query->latest()->paginate(10)->withQueryString();
+        $categories = Category::orderBy('name')->get();
+    
+        return view('master-data.product.index', compact('products', 'categories'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
