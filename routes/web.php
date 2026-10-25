@@ -7,7 +7,7 @@ use App\Http\Controllers\CategoryController; #Praktikum 7
 use App\Http\Controllers\ProductController; #Praktikum 7
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 #=============================================================================================================
 # Praktikum 2
