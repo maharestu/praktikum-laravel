@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController; #Praktikum 2
 use App\Http\Controllers\Auth\LoginController; #Praktikum 4
 use App\Http\Controllers\CategoryController; #Praktikum 7
 use App\Http\Controllers\ProductController; #Praktikum 7
+use App\Http\Controllers\PosController; #Praktikum 12
 
 Route::get('/', function () {
     return view('dashboard');
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
     Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
     Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
+    Route::get('/pos/{transaction}/struk', [PosController::class, 'struk'])->name('pos.struk'); //Praktikum 12
 });
 #=============================================================================================================
 # Demo Presentasi
