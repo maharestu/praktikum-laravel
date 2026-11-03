@@ -6,9 +6,10 @@ use App\Http\Controllers\Auth\LoginController; #Praktikum 4
 use App\Http\Controllers\CategoryController; #Praktikum 7
 use App\Http\Controllers\ProductController; #Praktikum 7
 use App\Http\Controllers\PosController; #Praktikum 12
+use App\Http\Controllers\ReportController; #Praktikum 13
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('auth.login');
 });
 #=============================================================================================================
 # Praktikum 2
@@ -37,6 +38,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
     #Tugas Praktikum 4
     Route::resource('users', UserController::class);
+    #Praktikum 13
+    Route::get('/reports/sales/export', [ReportController::class, 'export'])->name('report.export');
 });
 
 Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
